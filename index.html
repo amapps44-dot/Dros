@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -42,7 +41,8 @@
   .lesson:nth-of-type(4){ --accent:#7C3AED; }
   .lesson:nth-of-type(5){ --accent:#DB2777; }
   .lesson:nth-of-type(6){ --accent:#16A34A; }
-  .en, .en-word{ direction:ltr; unicode-bidi:isolate; display:inline-block; font-family:var(--font-en-display); }
+  .en{ direction:ltr; unicode-bidi:isolate; display:inline-block; font-family:var(--font-en-display); }
+  .en-word{ direction:ltr; unicode-bidi:isolate; display:block; font-family:var(--font-en-display); }
 
   a{color:inherit; text-decoration:none;}
   :focus-visible{ outline:3px solid var(--marigold); outline-offset:3px; }
@@ -105,10 +105,10 @@
   /* CARD GRID */
   .cards{ display:grid; gap:10px; grid-template-columns:repeat(auto-fill,minmax(92px,1fr)); }
   .cards.grid-phrases{ grid-template-columns:repeat(2,1fr); gap:12px; }
-  .grid-phrases .card .en-word{ white-space:normal; word-spacing:normal; }
+  .grid-phrases .card .en-word{ display:block; white-space:normal; word-spacing:normal; }
 
   .card{ background:none; border:none; padding:0; cursor:pointer; perspective:800px; height:92px; }
-  .grid-phrases .card{ height:165px; }
+  .grid-phrases .card{ height:155px; }
   .card-inner{
     position:relative; width:100%; height:100%; transform-style:preserve-3d;
     transition:transform .5s cubic-bezier(.4,.2,.2,1);
@@ -123,7 +123,7 @@
   .card-face.back{ background:var(--card-back); color:var(--chalk-white); transform:rotateY(180deg); font-family:var(--font-ar-display); font-weight:700; font-size:1rem; }
 
   .card .en-word{ font-weight:700; font-size:1.1rem; color:var(--ink); }
-  .grid-phrases .card .en-word{ font-size:.8rem; line-height:1.3; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%; }
+  .grid-phrases .card .en-word{ font-size:.85rem; line-height:1.3; }
   .card .hint{ font-size:.72rem; color:#8a8a8a; font-family:var(--font-ar-body); }
   .card .meaning{ font-size:.85rem; color:var(--accent); font-weight:700; font-family:var(--font-ar-display); margin-top:2px; }
   .card .badge{ position:absolute; top:6px; right:8px; font-size:.7rem; color:var(--accent); font-weight:700; }
@@ -133,6 +133,7 @@
   /* OUTRO */
   .outro{ max-width:680px; margin:50px auto 70px; padding:0 20px; text-align:center; color:var(--muted); font-size:1rem; }
   .outro .en{ color:var(--marigold); }
+  .outro a.more{ color:var(--marigold); font-weight:700; border-bottom:2px dashed var(--marigold); }
 
   @media (prefers-reduced-motion:reduce){
     html{ scroll-behavior:auto; }
@@ -224,6 +225,7 @@
 
 <footer class="outro">
   <p>أحسنت! أنهيت دروسك التمهيدية الستة <span class="en" dir="ltr">— well done.</span> كرّر البطاقات خمس دقائق يوميًا، وستلاحظ فرقًا حقيقيًا في أسبوع واحد فقط.</p>
+  <p style="margin-top:10px;">جاهز لمزيد؟ <a class="more" href="english-lessons-page2.html">انتقل لدروس الأيام والشهور والأرقام ←</a></p>
 </footer>
 
 <script>
@@ -257,15 +259,14 @@
       ["I","آي","أنا"],["You","يو","أنتَ / أنتِ"],["He","هي","هو"],["She","شي","هي"],
       ["We","وي","نحن"],["They","ذاي","هم"],["It","إت","هو / هي (لغير العاقل)"]
     ]},
-
-"lesson-5": { cls:"phrase", items:[
-  ["What's your name?","ما اسمك؟"],
-  ["My name is...","اسمي..."],
-  ["Nice to meet you","سعيد بلقائك"],
-  ["Where are you from?","من أين أنت؟"],
-  ["I am from...","أنا من..."],
-  ["I don't understand","لا أفهم"],
-  ["Can you repeat, please?","هل يمكنك التكرار من فضلك؟"]
+    "lesson-5": { cls:"phrase", items:[
+      ["What's your name?","واتس يور نيم؟","ما اسمك؟"],
+      ["My name is...","ماي نيم إز...","اسمي..."],
+      ["Nice to meet you","نايس تو ميت يو","سعيد بلقائك"],
+      ["Where are you from?","وير آر يو فروم؟","من أين أنت؟"],
+      ["I am from...","آي ام فروم...","أنا من..."],
+      ["I don't understand","آي دونت أندرستاند","لا أفهم"],
+      ["Can you repeat, please?","كان يو ريبيت، بليز؟","هل يمكنك التكرار من فضلك؟"]
     ]},
     "lesson-6": { cls:"swatch", items:[
       ["Red","رِد","أحمر","#D6463B"],["Blue","بلو","أزرق","#3B6EA8"],
@@ -292,7 +293,6 @@
             <span class="card-face front">
               ${badge}${swatch}
               <span class="en-word" dir="ltr">${en}</span>
-              ${hint ? `<span class="hint">${hint}</span>` : ''}
               ${info.cls === 'phrase' ? `<span class="meaning">${back}</span>` : ''}
               <span class="speaker" aria-hidden="true">🔊</span>
             </span>
