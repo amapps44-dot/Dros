@@ -89,4 +89,92 @@ body{
 
 <script>
 /* ——— البيانات كما هي ——— */
-const
+const data = {
+  "lesson-1": { cls:"letter", items:[
+    ["A","","",""],["B","","",""],["C","","",""],["D","","",""],
+    ["E","","",""],["F","","",""],["G","","",""],["H","","",""],
+    ["I","","",""],["J","","",""],["K","","",""],["L","","",""],
+    ["M","","",""],["N","","",""],["O","","",""],["P","","",""],
+    ["Q","","",""],["R","","",""],["S","","",""],["T","","",""],
+    ["U","","",""],["V","","",""],["W","","",""],["X","","",""],
+    ["Y","","",""],["Z","","",""]
+  ]},
+  /* باقي الدروس كما هي */
+};
+/* ——— إنشاء البطاقات ——— */
+Object.entries(data).forEach(([id, info]) => {
+  const container = document.getElementById('cards-' + id);
+  container.innerHTML = info.items.map(item => {
+    const [en, hint, back, extra] = item;
+
+    let speakText = en;  // ← ← ← أهم تعديل: ينطق الحرف نفسه فقط
+
+    return `
+      <button class="card" type="button" data-speak="${speakText}">
+        <span class="card-inner">
+          <span class="card-face front">
+            <span class="en-word" dir="ltr">${en}</span>
+            <span class="speaker">🔊</span>
+          </span>
+          <span class="card-face back">${back}</span>
+        </span>
+      </button>`;
+  }).join('');
+});
+
+/* ——— نظام الأصوات ——— */
+let bestVoice = null;
+let englishVoices = [];
+const voiceSelect = document.getElementById('voiceSelect');
+
+function loadVoices(){
+  const voices = window.speechSynthesis.getVoices();
+  if(!voices.length) return;
+
+  englishVoices = voices.filter(v => /^en/i.test(v.lang));
+  bestVoice = englishVoices[0] || voices[0];
+
+  if(voiceSelect && !voiceSelect.dataset.filled){
+    voiceSelect.innerHTML = englishVoices.map((v,i)=>
+      `<option value="${i}">${v.name} (${v.lang})</option>`
+    ).join('');
+    voiceSelect.dataset.filled = '1';
+    voiceSelect._voices = englishVoices;
+  }
+}
+
+if('speechSynthesis' in window){
+  loadVoices();
+  window.speechSynthesis.onvoiceschanged = loadVoices;
+}
+
+voiceSelect.addEventListener('change', () => {
+  bestVoice = voiceSelect._voices[voiceSelect.value];
+});
+
+/* ——— وظيفة النطق ——— */
+function speak(text){
+  window.speechSynthesis.cancel();
+  setTimeout(() => {
+    const utter = new SpeechSynthesisUtterance(text);
+    if(bestVoice){
+      utter.voice = bestVoice;
+      utter.lang = bestVoice.lang;
+    }
+    utter.rate = 0.8;
+    speechSynthesis.speak(utter);
+  }, 60);
+}
+
+/* ——— تشغيل النطق عند الضغط ——— */
+document.addEventListener('click', e => {
+  const card = e.target.closest('.card');
+  if(card){
+    const speakText = card.dataset.speak;
+    speak(speakText);
+  }
+});
+</script>
+
+</body>
+</html>
