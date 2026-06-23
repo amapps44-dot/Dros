@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -226,86 +227,54 @@
 </footer>
 
 <script>
-function createCard(item, cls="") {
-  const card = document.createElement("div");
-  card.className = "card " + cls;
+  // [en, hint(transliteration), back(arabic), extra(badge or color)]
+  const data = {
+    "lesson-1": { cls:"letter", items:[
+      ["A","","تُنطق: إيه","ay"],["B","","تُنطق: بي","bee"],["C","","تُنطق: سي","see"],["D","","تُنطق: دي","dee"],
+      ["E","","تُنطق: إي","ee"],["F","","تُنطق: إف","eff"],["G","","تُنطق: جي","jee"],["H","","تُنطق: إتش","aitch"],
+      ["I","","تُنطق: آي","eye"],["J","","تُنطق: جاي","jay"],["K","","تُنطق: كاي","kay"],["L","","تُنطق: إل","el"],
+      ["M","","تُنطق: إم","em"],["N","","تُنطق: إن","en"],["O","","تُنطق: أو","oh"],["P","","تُنطق: بي","pee"],
+      ["Q","","تُنطق: كيو","kyoo"],["R","","تُنطق: آر","ar"],["S","","تُنطق: إس","ess"],["T","","تُنطق: تي","tee"],
+      ["U","","تُنطق: يو","you"],["V","","تُنطق: في","vee"],["W","","تُنطق: دبليو","double-you"],["X","","تُنطق: إكس","ex"],
+      ["Y","","تُنطق: واي","why"],["Z","","تُنطق: زد","Zee"]
+    ]},
+    "lesson-2": { cls:"", items:[
+      ["Hello","هالو","مرحبًا"],
+      ["Good morning","جود مورنينج","صباح الخير"],
+      ["Good evening","جود إيفنينج","مساء الخير"],
+      ["How are you?","هاو آر يو؟","كيف حالك؟"],
+      ["I'm fine, thanks","آيم فاين، ثانكس","أنا بخير، شكرًا"],
+      ["Please","بليز","من فضلك"],
+      ["Thank you","ثانك يو","شكرًا"],
+      ["Goodbye","جودباي","مع السلامة"]
+    ]},
+    "lesson-3": { cls:"badge", items:[
+      ["One","وَن","واحد",1],["Two","تو","اثنان",2],["Three","ثري","ثلاثة",3],
+      ["Four","فور","أربعة",4],["Five","فايف","خمسة",5],["Six","سِكس","ستة",6],
+      ["Seven","سِڤن","سبعة",7],["Eight","إيت","ثمانية",8],["Nine","ناين","تسعة",9],["Ten","تِن","عشرة",10]
+    ]},
+    "lesson-4": { cls:"", items:[
+      ["I","آي","أنا"],["You","يو","أنتَ / أنتِ"],["He","هي","هو"],["She","شي","هي"],
+      ["We","وي","نحن"],["They","ذاي","هم"],["It","إت","هو / هي (لغير العاقل)"]
+    ]},
 
-  card.innerHTML = `
-    <div class="front">
-      ${item[0]}
-      <button class="speak-btn">🔊</button>
-    </div>
-    <div class="back">${item[1]}</div>
-  `;
-
-  card.querySelector(".speak-btn").onclick = () => {
-    const utter = new SpeechSynthesisUtterance(item[0]);
-    utter.lang = "en-US";
-    utter.rate = 0.9;
-    speechSynthesis.speak(utter);
+"lesson-5": { cls:"phrase", items:[
+  ["What's your name?","ما اسمك؟"],
+  ["My name is...","اسمي..."],
+  ["Nice to meet you","سعيد بلقائك"],
+  ["Where are you from?","من أين أنت؟"],
+  ["I am from...","أنا من..."],
+  ["I don't understand","لا أفهم"],
+  ["Can you repeat, please?","هل يمكنك التكرار من فضلك؟"]
+    ]},
+    "lesson-6": { cls:"swatch", items:[
+      ["Red","رِد","أحمر","#D6463B"],["Blue","بلو","أزرق","#3B6EA8"],
+      ["Green","جرين","أخضر","#3F8F5F"],["Yellow","يلو","أصفر","#E8C547"],
+      ["Black","بلاك","أسود","#2B2B2B"],["White","وايت","أبيض","#F4F1E8"],
+      ["Orange","أورانج","برتقالي","#E8833D"],["Purple","بربل","بنفسجي","#8B5FA3"]
+    ]}
   };
 
-  return card;
-}
-
-const data = {
-  "lesson-1": { cls:"letter", items:[
-    ["A","حرف A"],
-    ["B","حرف B"],
-    ["E","حرف E"],
-    ["F","حرف F"],
-    ["I","حرف I"],
-    ["J","حرف J"],
-    ["M","حرف M"],
-    ["N","حرف N"],
-    ["Q","حرف Q"],
-    ["R","حرف R"],
-    ["U","حرف U"],
-    ["V","حرف V"],
-    ["Y","حرف Y"],
-    ["Z","حرف Z"]
-  ]},
-
-  "lesson-2": { cls:"", items:[
-    ["Hello","مرحباً"],
-    ["Good morning","صباح الخير"],
-    ["Good evening","مساء الخير"],
-    ["How are you?","كيف حالك؟"],
-    ["I'm fine, thanks","أنا بخير شكراً"],
-    ["Please","من فضلك"],
-    ["Thank you","شكراً"],
-    ["Goodbye","مع السلامة"]
-  ]},
-
-  "lesson-3": { cls:"badge", items:[
-    ["One","واحد"],
-    ["Two","اثنان"],
-    ["Four","أربعة"],
-    ["Five","خمسة"],
-    ["Seven","سبعة"],
-    ["Eight","ثمانية"]
-  ]},
-
-  "lesson-4": { cls:"", items:[
-    ["I","أنا"],
-    ["You","أنت"],
-    ["He","هو"],
-    ["We","نحن"],
-    ["They","هم"],
-    ["It","غير عاقل"]
-  ]},
-
-  "lesson-5": { cls:"phrase", items:[
-    ["What's your name?","ما اسمك؟"],
-    ["My name is...","اسمي..."],
-    ["Nice to meet you","سعيد بلقائك"],
-    ["Where are you from?","من أين أنت؟"],
-    ["I am from...","أنا من..."],
-    ["I don't understand","لا أفهم"],
-    ["Can you repeat, please?","هل يمكنك التكرار؟"]
-  ]}
-};
-  
   Object.entries(data).forEach(([id, info]) => {
     const container = document.getElementById('cards-' + id);
     container.innerHTML = info.items.map(item => {
