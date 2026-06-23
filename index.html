@@ -220,8 +220,43 @@
 <footer class="outro">
   <p>أحسنت! أنهيت دروسك التمهيدية الستة <span class="en" dir="ltr">— well done.</span> كرّر البطاقات خمس دقائق يوميًا، وستلاحظ فرقًا حقيقيًا في أسبوع واحد فقط.</p>
 </footer>
+Object.entries(data).forEach(([id, info]) => {
+  const container = document.getElementById('cards-' + id);
 
-<script>const data = {
+  container.innerHTML = info.items.map(([en, ar]) => {
+    return `
+      <button class="card" type="button" data-speak="${en}">
+        <span class="card-inner">
+          <span class="card-face front">
+            <span class="en-word" dir="ltr">${en}</span>
+            <span class="speaker">🔊</span>
+          </span>
+          <span class="card-face back">${ar}</span>
+        </span>
+      </button>
+    `;
+  }).join('');
+});
+
+function speak(text){
+  window.speechSynthesis.cancel();
+  const utter = new SpeechSynthesisUtterance(text);
+  utter.lang = "en-US";
+  utter.rate = 0.9;
+  window.speechSynthesis.speak(utter);
+}
+
+document.addEventListener('click', e => {
+  const card = e.target.closest('.card');
+  if(card){
+    card.classList.toggle('flipped');
+    const speakText = card.dataset.speak;
+    if(speakText) speak(speakText);
+  }
+});
+
+<script>
+  const data = {
   "lesson-1": { cls:"letter", items:[
     ["A","حرف A"],["B","حرف B"],["C","حرف C"],["D","حرف D"],
     ["E","حرف E"],["F","حرف F"],["G","حرف G"],["H","حرف H"],
