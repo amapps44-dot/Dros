@@ -129,7 +129,7 @@
   .grid-phrases .card .en-word{ display:block; white-space:normal; font-size:1rem; line-height:1.4; font-weight:800; }
   .card .meaning{ font-size:.85rem; color:var(--accent); font-weight:700; font-family:var(--font-ar-display); margin-top:2px; }
   .card .badge{ position:absolute; top:6px; right:8px; font-size:.7rem; color:var(--accent); font-weight:700; }
-  .card .speaker{ position:absolute; bottom:5px; left:7px; font-size:.8rem; opacity:.55; }
+
 
   /* OUTRO */
   .outro{ max-width:680px; margin:50px auto 70px; padding:0 20px; text-align:center; color:var(--muted); font-size:1rem; }
@@ -218,8 +218,8 @@
 <script>
   const data = {
     "lesson-7": { cls:"", items:[
-      ["Monday","الإثنين"],["Tuesday","الثلاثاء"],["Wednesday","الأربعاء"],["Thursday","الخميس"],
-      ["Friday","الجمعة"],["Saturday","السبت"],["Sunday","الأحد"]
+      ["Sunday","الأحد"],["Monday","الإثنين"],["Tuesday","الثلاثاء"],["Wednesday","الأربعاء"],
+      ["Thursday","الخميس"],["Friday","الجمعة"],["Saturday","السبت"]
     ]},
     "lesson-8": { cls:"", items:[
       ["January","يناير"],["February","فبراير"],["March","مارس"],["April","أبريل"],
@@ -257,7 +257,6 @@
               ${badge}
               <span class="en-word" dir="ltr">${en}</span>
               ${meaning}
-              <span class="speaker" aria-hidden="true">🔊</span>
             </span>
             <span class="card-face back">${back}</span>
           </span>
