@@ -127,8 +127,7 @@
   .card .hint{ font-size:.72rem; color:#8a8a8a; font-family:var(--font-ar-body); }
   .card .meaning{ font-size:.85rem; color:var(--accent); font-weight:700; font-family:var(--font-ar-display); margin-top:2px; }
   .card .badge{ position:absolute; top:6px; right:8px; font-size:.7rem; color:var(--accent); font-weight:700; }
-  .card .swatch{ width:18px; height:18px; border-radius:50%; border:1px solid rgba(0,0,0,.25); margin-bottom:2px; }
-  .card .speaker{ position:absolute; bottom:5px; left:7px; font-size:.8rem; opacity:.55; }
+  .card .swatch{ width:40px; aspect-ratio:1/1; flex-shrink:0; border-radius:50%; border:3px solid rgba(0,0,0,.3); margin-bottom:8px; box-shadow:0 3px 6px rgba(0,0,0,.2); display:block; }
 
   /* OUTRO */
   .outro{ max-width:680px; margin:50px auto 70px; padding:0 20px; text-align:center; color:var(--muted); font-size:1rem; }
@@ -301,7 +300,6 @@
               ${badge}${swatch}
               <span class="en-word" dir="ltr">${en}</span>
               ${info.cls === 'phrase' ? `<span class="meaning">${back}</span>` : ''}
-              <span class="speaker" aria-hidden="true">🔊</span>
             </span>
             <span class="card-face back">${back}</span>
           </span>
