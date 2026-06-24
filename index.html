@@ -135,6 +135,13 @@
   .outro .en{ color:var(--marigold); }
   .outro a.more{ color:var(--marigold); font-weight:700; border-bottom:2px dashed var(--marigold); }
 
+  @media (min-width:900px){
+    main{ max-width:880px; }
+    .hero-inner{ max-width:760px; }
+    .lesson-nav{ justify-content:center; overflow-x:visible; flex-wrap:wrap; }
+    .cards{ grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); }
+    .cards.grid-phrases{ grid-template-columns:repeat(2,1fr); }
+  }
   @media (prefers-reduced-motion:reduce){
     html{ scroll-behavior:auto; }
     .card-inner{ transition:none; }
