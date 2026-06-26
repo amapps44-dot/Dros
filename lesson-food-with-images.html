@@ -31,17 +31,6 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.18);
         }
 
-        .back-btn {
-            display: inline-block;
-            margin-bottom: 15px;
-            color: #7a4a2a;
-            text-decoration: none;
-            font-size: 16px;
-            background: #f0dfc3;
-            padding: 6px 12px;
-            border-radius: 8px;
-        }
-
         .dropdown-container {
             display: inline-block;
             position: relative;
@@ -52,7 +41,6 @@
         .dropdown-btn {
             display: inline-block;
             color: white;
-            text-decoration: none;
             font-size: 16px;
             background: #d89860;
             padding: 8px 14px;
@@ -60,10 +48,6 @@
             border: none;
             cursor: pointer;
             font-weight: bold;
-        }
-
-        .dropdown-btn:hover {
-            background: #c88550;
         }
 
         .dropdown-content {
@@ -89,21 +73,6 @@
             border-bottom: 1px solid rgba(120, 80, 40, 0.2);
         }
 
-        .dropdown-content a:last-child {
-            border-bottom: none;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #e8cdb0;
-            color: #5a2a0a;
-        }
-
-        .dropdown-content a.active {
-            background-color: #d89860;
-            color: white;
-            font-weight: bold;
-        }
-
         .dropdown-container:hover .dropdown-content {
             display: block;
         }
@@ -111,17 +80,6 @@
         .header {
             text-align: center;
             margin-bottom: 20px;
-        }
-
-        .header h1 {
-            margin: 0;
-            font-size: 28px;
-        }
-
-        .header p {
-            margin: 6px 0 0;
-            font-size: 15px;
-            color: #7a5638;
         }
 
         .grid {
@@ -144,11 +102,6 @@
             margin-bottom: 10px;
         }
 
-        .card h2 {
-            margin: 0 0 8px;
-            font-size: 20px;
-        }
-
         .chips {
             display: flex;
             flex-wrap: wrap;
@@ -156,31 +109,27 @@
             margin: 8px 0;
         }
 
-        .chip {
-            background: #f0dfc3;
-            padding: 5px 10px;
-            border-radius: 999px;
-            font-size: 14px;
+        /* تنسيق الصور الجديد */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            margin-top: 35px;
         }
 
-        .speak {
-            background: #d8c3a0;
-            padding: 4px 10px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 13px;
-            display: inline-block;
-            margin-bottom: 6px;
-        }
-
-        svg {
-            width: 40px;
-            height: 40px;
-            margin-bottom: 6px;
+        .gallery img {
+            width: 100%;
+            border-radius: 12px;
+            background: #f7f3ec;
+            box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
+            object-fit: cover;
         }
 
         @media (max-width: 750px) {
             .grid {
+                grid-template-columns: 1fr;
+            }
+            .gallery {
                 grid-template-columns: 1fr;
             }
         }
@@ -216,14 +165,10 @@
 
             <div class="grid">
 
-                <!-- Pizza -->
                 <div class="card">
-                    <img src="https://images.pexels.com/photos/825661/pexels-photo-825661.jpeg" alt="Pizza">
+                    <img src="https://images.pexels.com/photos/825661/pexels-photo-825661.jpeg">
                     <div class="speak" onclick="speak('Pizza')">🔊 نطق: Pizza</div>
-
                     <h2>🍕 البيتزا</h2>
-
-                    <p>مكونات:</p>
                     <div class="chips">
                         <div class="chip">🧀 جبن - Cheese</div>
                         <div class="chip">🫒 زيتون - Olives</div>
@@ -231,14 +176,10 @@
                     </div>
                 </div>
 
-                <!-- Sushi -->
                 <div class="card">
-                    <img src="https://images.pexels.com/photos/357756/pexels-photo-357756.jpeg" alt="Sushi">
+                    <img src="https://images.pexels.com/photos/357756/pexels-photo-357756.jpeg">
                     <div class="speak" onclick="speak('Sushi')">🔊 نطق: Sushi</div>
-
                     <h2>🍣 السوشي</h2>
-
-                    <p>مكونات:</p>
                     <div class="chips">
                         <div class="chip">🧀 جبن - Cheese</div>
                         <div class="chip">🐟 سالمون - Salmon</div>
@@ -246,14 +187,10 @@
                     </div>
                 </div>
 
-                <!-- Steak -->
                 <div class="card">
-                    <img src="https://images.pexels.com/photos/675951/pexels-photo-675951.jpeg" alt="Steak">
+                    <img src="https://images.pexels.com/photos/675951/pexels-photo-675951.jpeg">
                     <div class="speak" onclick="speak('Steak')">🔊 نطق: Steak</div>
-
                     <h2>🥩 الستيك</h2>
-
-                    <p>درجات النضج:</p>
                     <div class="chips">
                         <div class="chip">نيء - Rare</div>
                         <div class="chip">متوسط - Medium</div>
@@ -261,14 +198,10 @@
                     </div>
                 </div>
 
-                <!-- Spices -->
                 <div class="card">
-                    <img src="https://images.pexels.com/photos/277253/pexels-photo-277253.jpeg" alt="Spices">
+                    <img src="https://images.pexels.com/photos/277253/pexels-photo-277253.jpeg">
                     <div class="speak" onclick="speak('Spices')">🔊 نطق: Spices</div>
-
                     <h2>🌿 البهارات</h2>
-
-                    <p>أنواع:</p>
                     <div class="chips">
                         <div class="chip">🧂 ملح - Salt</div>
                         <div class="chip">🧂 فلفل - Pepper</div>
@@ -276,6 +209,17 @@
                     </div>
                 </div>
 
+            </div>
+
+            <h2 style="margin-top: 35px; text-align:center;">📸 صور الدرس</h2>
+
+            <div class="gallery">
+                <img src="IMAGE1.jpg">
+                <img src="IMAGE2.jpg">
+                <img src="IMAGE3.jpg">
+                <img src="IMAGE4.jpg">
+                <img src="IMAGE5.jpg">
+                <img src="IMAGE6.jpg">
             </div>
 
         </div>
