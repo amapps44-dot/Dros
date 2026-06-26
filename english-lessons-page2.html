@@ -146,13 +146,88 @@
     html{ scroll-behavior:auto; }
     .card-inner{ transition:none; }
   }
+
+  /* DROPDOWN */
+  .dropdown-container {
+    display: inline-block;
+    position: relative;
+    margin: 0 0 20px 0;
+  }
+
+  .dropdown-btn {
+    display: inline-block;
+    color: var(--chalk-white);
+    text-decoration: none;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--chalk-white);
+    cursor: pointer;
+    font-weight: bold;
+    font-family: var(--font-ar-body);
+  }
+
+  .dropdown-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgba(76, 29, 149, 0.95);
+    min-width: 280px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    z-index: 100;
+    border-radius: 8px;
+    right: 0;
+    top: 100%;
+    margin-top: 5px;
+    border: 1px solid var(--chalk-white);
+  }
+
+  .dropdown-content a {
+    color: var(--chalk-white);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    transition: background 0.2s;
+  }
+
+  .dropdown-content a:last-child {
+    border-bottom: none;
+  }
+
+  .dropdown-content a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .dropdown-content a.active {
+    background-color: var(--marigold);
+    color: var(--bg-1);
+    font-weight: bold;
+  }
+
+  .dropdown-container:hover .dropdown-content {
+    display: block;
+  }
 </style>
 </head>
 <body>
 
 <header class="hero">
   <div class="hero-inner">
-    <a class="back-link" href="index.html">→ رجوع للدروس الأساسية</a>
+    <div class="dropdown-container">
+      <button class="dropdown-btn">📚 اختر صفحة</button>
+      <div class="dropdown-content">
+        <a href="index-lessons.html">🔤 خطواتك الأولى نحو الإنجليزية</a>
+        <a href="english-lessons-page2.html" class="active">📚 دروس إضافية</a>
+        <a href="lesson-food-full.html">🍽️ درس 8 - الطعام والمطاعم</a>
+        <a href="lesson-food-with-images.html">🖼️ درس 8 - مع صور وصوت</a>
+      </div>
+    </div>
     <p class="eyebrow">دروس إضافية · المستوى الثاني</p>
     <h1>كمّل رحلتك في <span class="en" dir="ltr">English</span></h1>
     <p class="subtitle">ثلاثة دروس جديدة: أيام الأسبوع، الشهور، وتكملة الأرقام. اضغط على أي بطاقة لتسمع نطقها وتشاهد المعنى.</p>
