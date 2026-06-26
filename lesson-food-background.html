@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>درس الطعام والمطاعم</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Cairo", sans-serif;
+            background: #f5e8d3;
+            color: #4a3422;
+        }
+
+        .page {
+            min-height: 100vh;
+            background-image:
+                linear-gradient(to bottom, rgba(255,255,255,0.6), rgba(255,255,255,0.3)),
+                url("https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=1200&h=800&fit=crop");
+            background-size: cover;
+            background-position: center;
+            padding: 30px 15px;
+        }
+
+        .content {
+            max-width: 900px;
+            margin: auto;
+            background: rgba(255, 250, 240, 0.92);
+            border-radius: 18px;
+            padding: 25px 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+        }
+
+        .dropdown-container {
+            display: inline-block;
+            position: relative;
+            margin-bottom: 15px;
+            margin-left: 10px;
+        }
+
+        .dropdown-btn {
+            display: inline-block;
+            color: white;
+            font-size: 16px;
+            background: #d89860;
+            padding: 8px 14px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .dropdown-btn:hover {
+            background: #c88550;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f0dfc3;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 8px;
+            right: 0;
+            top: 100%;
+            margin-top: 5px;
+            border: 1px solid #d89860;
+        }
+
+        .dropdown-content a {
+            color: #7a4a2a;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 15px;
+            border-bottom: 1px solid rgba(120, 80, 40, 0.2);
+        }
+
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #e8cdb0;
+        }
+
+        .dropdown-content a.active {
+            background-color: #d89860;
+            color: white;
+            font-weight: bold;
+        }
+
+        .dropdown-container:hover .dropdown-content {
+            display: block;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        .header p {
+            margin: 6px 0 0;
+            font-size: 15px;
+            color: #7a5638;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .card {
+            background: #fff7e6;
+            border-radius: 14px;
+            padding: 15px;
+            border: 1px solid rgba(120, 80, 40, 0.2);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+
+        .card h2 {
+            margin: 0 0 8px;
+            font-size: 20px;
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 10px;
+        }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 8px 0;
+        }
+
+        .chip {
+            background: #f0dfc3;
+            padding: 5px 10px;
+            border-radius: 999px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 750px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="content">
+            <div class="dropdown-container">
+                <button class="dropdown-btn">📚 اختر صفحة</button>
+                <div class="dropdown-content">
+                    <a href="index-lessons.html">🔤 خطواتك الأولى نحو الإنجليزية</a>
+                    <a href="english-lessons-page2.html">📚 دروس إضافية</a>
+                    <a href="lesson-food-full.html">🍽️ درس 8 - الطعام والمطاعم</a>
+                    <a href="lesson-food-with-images.html" class="active">🖼️ درس 8 - مع صور وصوت</a>
+                </div>
+            </div>
+
+            <div class="header">
+                <h1>درس الطعام والمطاعم 🍽️</h1>
+                <p>صور · نطق · مكونات · معلومات</p>
+            </div>
+
+            <div class="grid">
+                <!-- Pizza -->
+                <div class="card">
+                    <img src="https://images.pexels.com/photos/825661/pexels-photo-825661.jpeg" alt="Pizza">
+                    <h2>🍕 البيتزا</h2>
+                    <div class="speak" onclick="speak('Pizza')">🔊 نطق: Pizza</div>
+                    <p>مكونات:</p>
+                    <div class="chips">
+                        <div class="chip">🧀 جبن - Cheese</div>
+                        <div class="chip">🫒 زيتون - Olives</div>
+                        <div class="chip">🌶️ فلفل - Pepper</div>
+                    </div>
+                </div>
+
+                <!-- Sushi -->
+                <div class="card">
+                    <img src="https://images.pexels.com/photos/357756/pexels-photo-357756.jpeg" alt="Sushi">
+                    <h2>🍣 السوشي</h2>
+                    <div class="speak" onclick="speak('Sushi')">🔊 نطق: Sushi</div>
+                    <p>مكونات:</p>
+                    <div class="chips">
+                        <div class="chip">🐟 سالمون - Salmon</div>
+                        <div class="chip">🍤 ربيان - Shrimp</div>
+                        <div class="chip">🍚 أرز - Rice</div>
+                    </div>
+                </div>
+
+                <!-- Steak -->
+                <div class="card">
+                    <img src="https://images.pexels.com/photos/675951/pexels-photo-675951.jpeg" alt="Steak">
+                    <h2>🥩 الستيك</h2>
+                    <div class="speak" onclick="speak('Steak')">🔊 نطق: Steak</div>
+                    <p>درجات النضج:</p>
+                    <div class="chips">
+                        <div class="chip">نيء - Rare</div>
+                        <div class="chip">متوسط - Medium</div>
+                        <div class="chip">ناضج - Well Done</div>
+                    </div>
+                </div>
+
+                <!-- Spices -->
+                <div class="card">
+                    <img src="https://images.pexels.com/photos/277253/pexels-photo-277253.jpeg" alt="Spices">
+                    <h2>🌿 البهارات</h2>
+                    <div class="speak" onclick="speak('Spices')">🔊 نطق: Spices</div>
+                    <p>أنواع:</p>
+                    <div class="chips">
+                        <div class="chip">🧂 ملح - Salt</div>
+                        <div class="chip">🧂 فلفل - Pepper</div>
+                        <div class="chip">🌿 ريحان - Basil</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function speak(text) {
+            const msg = new SpeechSynthesisUtterance(text);
+            msg.lang = "en-US";
+            speechSynthesis.speak(msg);
+        }
+    </script>
+</body>
+</html>
