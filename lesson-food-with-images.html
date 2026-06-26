@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>درس الطعام والمطاعم</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Cairo", sans-serif;
+            background: #f5e8d3;
+            color: #4a3422;
+        }
+
+        .page {
+            min-height: 100vh;
+            background-image:
+                linear-gradient(to bottom, rgba(255,255,255,0.5), rgba(255,255,255,0.2)),
+                url("https://images.pexels.com/photos/326333/pexels-photo-326333.jpeg");
+            background-size: cover;
+            background-position: center;
+            padding: 30px 15px;
+        }
+
+        .content {
+            max-width: 900px;
+            margin: auto;
+            background: rgba(255, 250, 240, 0.92);
+            border-radius: 18px;
+            padding: 25px 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: #7a4a2a;
+            text-decoration: none;
+            font-size: 16px;
+            background: #f0dfc3;
+            padding: 6px 12px;
+            border-radius: 8px;
+        }
+
+        .dropdown-container {
+            display: inline-block;
+            position: relative;
+            margin-bottom: 15px;
+            margin-left: 10px;
+        }
+
+        .dropdown-btn {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            background: #d89860;
+            padding: 8px 14px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .dropdown-btn:hover {
+            background: #c88550;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f0dfc3;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 8px;
+            right: 0;
+            top: 100%;
+            margin-top: 5px;
+            border: 1px solid #d89860;
+        }
+
+        .dropdown-content a {
+            color: #7a4a2a;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 15px;
+            border-bottom: 1px solid rgba(120, 80, 40, 0.2);
+        }
+
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #e8cdb0;
+            color: #5a2a0a;
+        }
+
+        .dropdown-content a.active {
+            background-color: #d89860;
+            color: white;
+            font-weight: bold;
+        }
+
+        .dropdown-container:hover .dropdown-content {
+            display: block;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        .header p {
+            margin: 6px 0 0;
+            font-size: 15px;
+            color: #7a5638;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .card {
+            background: #fff7e6;
+            border-radius: 14px;
+            padding: 15px;
+            border: 1px solid rgba(120, 80, 40, 0.2);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 10px;
+        }
+
+        .card h2 {
+            margin: 0 0 8px;
+            font-size: 20px;
+        }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 8px 0;
+        }
+
+        .chip {
+            background: #f0dfc3;
+            padding: 5px 10px;
+            border-radius: 999px;
+            font-size: 14px;
+        }
+
+        .speak {
+            background: #d8c3a0;
+            padding: 4px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            display: inline-block;
+            margin-bottom: 6px;
+        }
+
+        svg {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 6px;
+        }
+
+        @media (max-width: 750px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <script>
+        function speak(text) {
+            const msg = new SpeechSynthesisUtterance(text);
+            msg.lang = "en-US";
+            speechSynthesis.speak(msg);
+        }
+    </script>
+</head>
+
+<body>
+    <div class="page">
+        <div class="content">
+
+            <div class="dropdown-container">
+                <button class="dropdown-btn">📚 اختر صفحة</button>
+                <div class="dropdown-content">
+                    <a href="https://github.com/amapps44-dot/Dros/blob/main/index.html">🔤 خطواتك الأولى نحو الإنجليزية</a>
+                    <a href="https://github.com/amapps44-dot/Dros/blob/main/english-lessons-page2.html">📚 دروس إضافية</a>
+                    <a href="lesson-food-full.html">🍽️ درس 8 - الطعام والمطاعم</a>
+                    <a href="lesson-food-with-images.html" class="active">🖼️ درس 8 - مع صور وصوت</a>
+                </div>
+            </div>
+
+            <div class="header">
+                <h1>درس الطعام والمطاعم 🍽️</h1>
+                <p>صور · نطق · رسومات · مكونات</p>
+            </div>
+
+            <div class="grid">
+
+                <!-- Pizza -->
+                <div class="card">
+                    <img src="https://images.pexels.com/photos/825661/pexels-photo-825661.jpeg" alt="Pizza">
+                    <div class="speak" onclick="speak('Pizza')">🔊 نطق: Pizza</div>
+
+                    <h2>🍕 البيتزا</h2>
+
+                    <!-- SVG -->
+                    <svg viewBox="0 0 64 64">
+                        <circle cx="32" cy="32" r="30" fill="#f4d28b"/>
+                        <circle cx="32" cy="32" r="22" fill="#d9534f"/>
+                        <circle cx="22" cy="28" r="4" fill="#8b0000"/>
+                        <circle cx="40" cy="36" r="4" fill="#8b0000"/>
+                    </svg>
+
+                    <p>مكونات:</p>
+                    <div class="chips">
+                        <div class="chip">🧀 جبن</div>
+                        <div class="chip">🫒 زيتون</div>
+                        <div class="chip">🌶️ فلفل</div>
+                    </div>
+                </div>
+
+                <!-- Sushi -->
+                <div class="card">
+                    <img src="https://images.pexels.com/photos/357756/pexels-photo-357756.jpeg" alt="Sushi">
+                    <div class="speak" onclick="speak('Sushi')">🔊 نطق: Sushi</div>
+
+                    <h2>🍣 السوشي</h2>
+
+                    <!-- SVG -->
+                    <svg viewBox="0 0 64 64">
+                        <rect x="10" y="20" width="44" height="24" rx="6" fill="#ffffff"/>
+                        <rect x="10" y="20" width="44" height="10" fill="#ff8c42"/>
+                    </svg>
+
+                    <p>مكونات:</p>
+                    <div class="chips">
+                        <div class="chip">🐟 سالمون</div>
+                        <div class="chip">🥒 خيار</div>
+                        <div class="chip">🍚 أرز</div>
+                    </div>
+                </div>
+
+                <!-- Steak -->
+                <div class="card">
+                    <img src="https://images.pexels.com/photos/675951/pexels-photo-675951.jpeg" alt="Steak">
+                    <div class="speak" onclick="speak('Steak')">🔊 نطق: Steak</div>
+
+                    <h2>🥩 الستيك</h2>
+
+                    <!-- SVG -->
+                    <svg viewBox="0 0 64 64">
+                        <ellipse cx="32" cy="32" rx="22" ry="14" fill="#8b3a3a"/>
+                        <ellipse cx="32" cy="32" rx="12" ry="6" fill="#d98c8c"/>
+                    </svg>
+
+                    <p>درجات النضج:</p>
+                    <div class="chips">
+                        <div class="chip">Rare</div>
+                        <div class="chip">Medium</div>
+                        <div class="chip">Well Done</div>
+                    </div>
+                </div>
+
+                <!-- Spices -->
+                <div class="card">
+                    <img src="https://images.pexels.com/photos/277253/pexels-photo-277253.jpeg" alt="Spices">
+                    <div class="speak" onclick="speak('Spices')">🔊 نطق: Spices</div>
+
+                    <h2>🌿 البهارات</h2>
+
+                    <!-- SVG -->
+                    <svg viewBox="0 0 64 64">
+                        <circle cx="32" cy="32" r="20" fill="#c2a878"/>
+                        <circle cx="32" cy="32" r="10" fill="#8b6a3a"/>
+                    </svg>
+
+                    <p>أنواع:</p>
+                    <div class="chips">
+                        <div class="chip">🧂 ملح</div>
+                        <div class="chip">🧂 فلفل</div>
+                        <div class="chip">🌿 ريحان</div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
